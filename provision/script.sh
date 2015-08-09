@@ -1,5 +1,18 @@
 #!/bin/sh
 
+# PREPARE PHP
+
+sudo apt-get remove -y php5 php5-*
+sudo apt-get autoremove -y
+sudo add-apt-repository --remove -y ppa:ondrej/php5-5.6
+sudo add-apt-repository -y ppa:ondrej/php5
+sudo apt-get -y update 
+sudo apt-get install -y php5 php5-memcached php5-mysql libapache2-mod-php5 php5-mcrypt php5-curl php5-cli php5-pgsql php5-redis php5-common php5-json php5-readline
+
+echo "extension=memcache.so" | sudo tee /etc/php5/apache2/conf.d/memcache.ini
+sudo sed -i 's/short_open_tag = Off/short_open_tag = On/;' /etc/php5/apache2/php.ini
+
+# SETUP APACHE
 sudo service apache2 stop
 
 # Remove all enabled VirtualHosts
