@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
     #config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
    
    # Default
-    config.vm.synced_folder "./default", "/var/sites/default", 
+    config.vm.synced_folder "./sites", "/var/sites", 
      :create => true, 
      :mount_options => ["dmode=755", "fmode=644"]
 
