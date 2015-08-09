@@ -19,4 +19,5 @@ Vagrant.configure("2") do |config|
     # Supress stdin: is not a tty warning
  	config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
     config.vm.provision "shell", path: "./provision/script.sh", keep_color: true
+    config.vm.provision "shell", path: "./provision/mbamission.sh", keep_color: true
 end
